@@ -16,7 +16,8 @@
     "@theia/monaco": "latest",
     "@theia/messages": "latest",
     "post-language-server": "0.0.0",
-    "dsm-wrapper": "0.0.0"
+    "dsm-wrapper": "0.0.0",
+    "dsm-manager": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "latest"
