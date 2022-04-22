@@ -27,3 +27,8 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
 sudo apt-get install -y nodejs
 npm install --global yarn
 ```
+## Modules
+- DSM-manager and available-modules json-file should be present at ./dsm-manager/build
+- DSM-manager jar should be named as 'manager.jar'
+- available-modules json-file should be named as 'available-modules.json'
+- Make sure that content of available-modules json-file is actually correct

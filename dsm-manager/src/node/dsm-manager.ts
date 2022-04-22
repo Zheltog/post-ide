@@ -33,11 +33,16 @@ export class DsmManager implements IDsmManager, BackendApplicationContribution {
         if (jarPaths.length === 0) {
             throw new Error('The DSM manager launcher was not found.');
         }
+        const jsonPaths = glob.sync('**/available-modules.json', { cwd: stuffPath });
+        if (jsonPaths.length === 0) {
+            throw new Error('The available-modules.json was not found.');
+        }
         const jarPath = path.resolve(stuffPath, jarPaths[0]);
+        const jsonPath = path.resolve(stuffPath, jsonPaths[0]);
         const command = 'java';
         const args: string[] = [];
         args.push('-jar', jarPath);
-        args.push('-amj', '/home/belog/post/post-ide/dsm-manager/build/dsms/available-modules.json', '-sam');
+        args.push('-amj', jsonPath, '-sam');
         await this.logger.info('[DSM manager] Spawning launch process with command ' + command + ' and arguments ' + args);
         await this.spawnProcessAsync(command, args);
         await this.logger.info('[DSM manager] Spawned launch process');
