@@ -43,7 +43,7 @@ module.exports = (port, host, argv) => Promise.resolve()
     .then(function () { return Promise.resolve(require('post-language-server/lib/node/language-server-backend-module')).then(load) })
     .then(function () { return Promise.resolve(require('ast-service/lib/node/ast-service-backend-module')).then(load) })
     .then(function () { return Promise.resolve(require('dsm-wrapper/lib/node/dsm-wrapper-backend-module')).then(load) })
-    .then(function () { return Promise.resolve(require('dsm-manager/lib/node/dsm-manager-backend-module')).then(load) })
+    .then(function () { return Promise.resolve(require('dsm-management/lib/node/dsm-manager-backend-module')).then(load) })
     .then(() => start(port, host, argv)).catch(reason => {
         console.error('Failed to start the backend application.');
         if (reason) {

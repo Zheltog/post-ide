@@ -12,7 +12,7 @@
   "workspaces": [
     "post-language-server",
     "ast-service",
-    "dsm-manager",
+    "dsm-management",
     "dsm-wrapper",
     "browser-app"
   ]
