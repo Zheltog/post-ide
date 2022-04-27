@@ -15,5 +15,8 @@
     "dsm-management",
     "dsm-wrapper",
     "browser-app"
-  ]
+  ],
+  "dependencies": {
+    "properties-reader": "^2.2.0"
+  }
 }

@@ -32,3 +32,4 @@ npm install --global yarn
 - DSM-manager jar should be named as 'manager.jar'
 - available-modules json-file should be named as 'available-modules.json'
 - Make sure that content of available-modules json-file is actually correct
+- You can define manager parameters by editing manager.properties file

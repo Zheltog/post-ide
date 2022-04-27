@@ -33,16 +33,24 @@ export class DsmManager implements IDsmManager, BackendApplicationContribution {
         if (jarPaths.length === 0) {
             throw new Error('The DSM manager launcher was not found.');
         }
-        const jsonPaths = glob.sync('**/available-modules.json', { cwd: stuffPath });
-        if (jsonPaths.length === 0) {
-            throw new Error('The available-modules.json was not found.');
+        const amJsonPaths = glob.sync('**/available-modules.json', { cwd: stuffPath });
+        if (amJsonPaths.length === 0) {
+            throw new Error('The available-modules.json file was not found.');
+        }
+        const mpPaths = glob.sync('**/manager.properties', { cwd: stuffPath });
+        if (mpPaths.length === 0) {
+            throw new Error('The manager.properties file was not found.');
         }
         const jarPath = path.resolve(stuffPath, jarPaths[0]);
-        const jsonPath = path.resolve(stuffPath, jsonPaths[0]);
+        const amJsonPath = path.resolve(stuffPath, amJsonPaths[0]);
+        const mpPath = path.resolve(stuffPath, mpPaths[0]);
+        const propertiesReader = require('properties-reader');
+        const properties = propertiesReader(mpPath);
+        const port = properties.get('port');
         const command = 'java';
         const args: string[] = [];
         args.push('-jar', jarPath);
-        args.push('-amj', jsonPath, '-sam', '-ap');
+        args.push('-amj', amJsonPath, '-sam', '-p', port);
         await this.logger.info('[DSM manager] Spawning launch process with command ' + command + ' and arguments ' + args);
         await this.spawnProcessAsync(command, args);
         await this.logger.info('[DSM manager] Spawned launch process');
