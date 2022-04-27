@@ -42,7 +42,7 @@ export class DsmManager implements IDsmManager, BackendApplicationContribution {
         const command = 'java';
         const args: string[] = [];
         args.push('-jar', jarPath);
-        args.push('-amj', jsonPath, '-sam');
+        args.push('-amj', jsonPath, '-sam', '-ap');
         await this.logger.info('[DSM manager] Spawning launch process with command ' + command + ' and arguments ' + args);
         await this.spawnProcessAsync(command, args);
         await this.logger.info('[DSM manager] Spawned launch process');
